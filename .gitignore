@@ -1,0 +1,5 @@
+.vs/
+iCheckAPI/bin/*
+iCheckAPI/obj/*
+iCheckAPI/Properties/*
+iCheckAPI/iCheckAPI.csproj.user
