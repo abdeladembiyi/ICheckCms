@@ -22,9 +22,18 @@ namespace iCheckAPI.Controllers
 
         // GET: api/Conducteurs
         [HttpGet]
-        public IEnumerable<Conducteur> GetConducteur()
+        public async Task<IEnumerable<Object>> GetConducteur()
         {
-            return _context.Conducteur;
+            return await _context.Conducteur.Select(s => new
+            {
+                s.Id,
+                s.NomComplet,
+                s.Cin,
+                s.NumBadge,
+                s.Cnss, 
+                permis = s.IdPermisNavigation.Libelle,
+                societe = s.IdSocieteNavigation.Libelle
+            }).ToListAsync();
         }
 
         // GET: api/Conducteurs/5
