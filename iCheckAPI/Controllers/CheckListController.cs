@@ -93,7 +93,7 @@ namespace iCheckAPI.Controllers
             System.Diagnostics.Debug.WriteLine(jsonDoc);
             System.Diagnostics.Debug.WriteLine(checkList.CatchAll);
 
-            var conducteur = _conducteurRepo.GetConducteurByCIN(checkList.Conducteur["cin"]);
+            var conducteur = _conducteurRepo.GetConducteurByNumBadge(checkList.Conducteur["numBadge"]);
             var vehicule = _vehiculeRepo.GetVehiculeByMatricule(checkList.Vehicule["matricule"]);
             var site = _siteRepo.GetSiteByLibelle(checkList.Site);
 
@@ -106,7 +106,7 @@ namespace iCheckAPI.Controllers
             {
                 Conducteur cond = new Conducteur()
                 {
-                    Cin = checkList.Conducteur["cin"],
+                    NumBadge = checkList.Conducteur["numBadge"],
                     NomComplet = checkList.Conducteur["nomComplet"]
                 };
 
@@ -160,8 +160,8 @@ namespace iCheckAPI.Controllers
                 blockage.IdVehicule = vehiculeID;
                 blockage.DateBlockage = checkList.Date.Value.Date;
                 blockage.IdCheckList = checkList.Id;
+                _context.Blockage.Add(blockage);
             }
-            _context.Blockage.Add(blockage);
             _context.SaveChanges();
             checkList.Vehicule["idBlockage"] = blockage.IdVehicule != null ? blockage.Id.ToString() : "-1";
             System.Diagnostics.Debug.WriteLine("BlockageID:" + blockageID);
@@ -183,7 +183,7 @@ namespace iCheckAPI.Controllers
 
             checkList.CatchAll = BsonSerializer.Deserialize<Dictionary<string, object>>(jsonDoc);
 
-            var conducteur = _conducteurRepo.GetConducteurByCIN(checkList.Conducteur["cin"]);
+            var conducteur = _conducteurRepo.GetConducteurByNumBadge(checkList.Conducteur["numBadge"]);
             var vehicule = _vehiculeRepo.GetVehiculeByMatricule(checkList.Vehicule["matricule"]);
             var site = _siteRepo.GetSiteByLibelle(checkList.Site);
 
@@ -195,7 +195,7 @@ namespace iCheckAPI.Controllers
             {
                 Conducteur cond = new Conducteur()
                 {
-                    Cin = checkList.Conducteur["cin"],
+                    NumBadge = checkList.Conducteur["numBadge"],
                     NomComplet = checkList.Conducteur["nomComplet"]
                 };
 

@@ -18,6 +18,11 @@ namespace iCheckAPI.Repositories
             return _context.Conducteur.FirstOrDefault(x => x.Cin == cin);
         }
 
+        public Conducteur GetConducteurByNumBadge(string numBadge)
+        {
+            return _context.Conducteur.FirstOrDefault(x => x.NumBadge == numBadge);
+        }
+
         public async Task Create(Conducteur conducteur)
         {
             _context.Conducteur.Add(conducteur);
@@ -30,6 +35,8 @@ namespace iCheckAPI.Repositories
     public interface IConducteurRepo
     {
         Conducteur GetConducteurByCIN(string cin);
+        Conducteur GetConducteurByNumBadge(string numBadge);
+
 
         Task Create(Conducteur conducteur);
     }

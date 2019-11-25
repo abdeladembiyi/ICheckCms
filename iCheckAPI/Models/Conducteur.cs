@@ -16,10 +16,10 @@ namespace iCheckAPI.Models
         public string Cnss { get; set; }
         public int? IdSociete { get; set; }
         public string NumBadge { get; set; }
-        public int? Idpermis { get; set; }
+        public int? IdPermis { get; set; }
 
         public Societe IdSocieteNavigation { get; set; }
-        public TypePermis IdpermisNavigation { get; set; }
+        public TypePermis IdPermisNavigation { get; set; }
         public ICollection<CheckListRef> CheckListRef { get; set; }
     }
 }

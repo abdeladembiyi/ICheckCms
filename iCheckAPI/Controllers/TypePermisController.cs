@@ -55,7 +55,7 @@ namespace iCheckAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != typePermis.Idpermis)
+            if (id != typePermis.Id)
             {
                 return BadRequest();
             }
@@ -93,7 +93,7 @@ namespace iCheckAPI.Controllers
             _context.TypePermis.Add(typePermis);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTypePermis", new { id = typePermis.Idpermis }, typePermis);
+            return CreatedAtAction("GetTypePermis", new { id = typePermis.Id }, typePermis);
         }
 
         // DELETE: api/TypePermis/5
@@ -119,7 +119,7 @@ namespace iCheckAPI.Controllers
 
         private bool TypePermisExists(int id)
         {
-            return _context.TypePermis.Any(e => e.Idpermis == id);
+            return _context.TypePermis.Any(e => e.Id == id);
         }
     }
 }

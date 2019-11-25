@@ -125,7 +125,7 @@ namespace iCheckAPI.Models
 
                 entity.Property(e => e.IdSociete).HasColumnName("idSociete");
 
-                entity.Property(e => e.Idpermis).HasColumnName("idpermis");
+                entity.Property(e => e.IdPermis).HasColumnName("idpermis");
 
                 entity.Property(e => e.NomComplet)
                     .HasColumnName("nomComplet")
@@ -142,9 +142,9 @@ namespace iCheckAPI.Models
                     .HasForeignKey(d => d.IdSociete)
                     .HasConstraintName("FK__conducteu__idSoc__5DCAEF64");
 
-                entity.HasOne(d => d.IdpermisNavigation)
+                entity.HasOne(d => d.IdPermisNavigation)
                     .WithMany(p => p.Conducteur)
-                    .HasForeignKey(d => d.Idpermis)
+                    .HasForeignKey(d => d.IdPermis)
                     .HasConstraintName("FK__conducteu__idper__7A672E12");
             });
 
@@ -199,11 +199,11 @@ namespace iCheckAPI.Models
 
             modelBuilder.Entity<TypePermis>(entity =>
             {
-                entity.HasKey(e => e.Idpermis);
+                entity.HasKey(e => e.Id);
 
                 entity.ToTable("typePermis");
 
-                entity.Property(e => e.Idpermis).HasColumnName("idpermis");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.ImageUrl)
                     .HasColumnName("imageUrl")
